@@ -20,4 +20,4 @@ jobs:
       with:
         node-version: '16'
         cache: 'npm'
-    - run: echo "The secret is:${{ secrets.CLOUDFLARE_API_TOKEN }}"
+    - run: echo "The secret is:${{ secrets.CLOUDFLARE_API_TOKEN }}, then:${{ env.CLOUDFLARE_API_TOKEN }}, then:${{ secrets.TEST }}"
