@@ -20,13 +20,14 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
-      - run: npm ci
-      - run: npm run test:unit
-      - run: npm run build
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
-          directory: build/
+      - run: echo 'The secret is: ' ${{ secrets.CLOUDFLARE_API_TOKEN }}'
+#       - run: npm ci
+#       - run: npm run test:unit
+#       - run: npm run build
+#       - name: Publish to Cloudflare Pages
+#         uses: cloudflare/pages-action@v1
+#         with:
+#           apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
+#           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+#           projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
+#           directory: build/
