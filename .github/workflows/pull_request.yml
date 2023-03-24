@@ -1,9 +1,11 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: "${{ github.actor }}: PR ${{ github.ref }}"
 on: [pull_request]
 jobs:
   Lint-Test-Actions:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
