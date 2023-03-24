@@ -10,6 +10,7 @@ env:
 
 jobs:
   Test-Build-Deploy-Actions:
+    environment: master
     runs-on: ubuntu-latest
     permissions:
       contents: read
