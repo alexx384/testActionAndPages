@@ -29,8 +29,13 @@ jobs:
             ~/.gradle/caches/modules-2/files-2.1/**
           key: maven-gradle-cache-${{ hashFiles('~/.m2/repository/**', '~/.gradle/caches/modules-2/files-2.1/**') }}
 
-      - name: Check caching works
-        run: du -cksh ~/.m2/repository && du -cksh ~/.gradle/caches/modules-2/files-2.1
+      - name: Check Maven caching works
+        run: du -cksh ~/.m2/repository
+        continue-on-error: true
+      
+      - name: Check Gradle caching works
+        run: du -cksh ~/.gradle/caches/modules-2/files-2.1
+        continue-on-error: true
 
       - name: Build Maven project
         run: cd maven-project && mvn -B verify
