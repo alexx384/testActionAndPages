@@ -14,31 +14,18 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
- 
+
       - name: Setup Java 11
         uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: 11
- 
-      - name: Cache Maven and Gradle dependencies
+
+	    - name: Cache Maven dependencies
         uses: actions/cache@v2
         with:
-          path: |
-            ~/.m2/repository/**
-            ~/.gradle/**
-          key: maven-gradle-cache-${{ hashFiles('~/.m2/repository/**', '~/.gradle/**') }}
-
-      - name: Check Maven caching works
-        run: du -cksh ~/.m2/repository
-        continue-on-error: true
-      
-      - name: Check Gradle caching works
-        run: du -cksh ~/.gradle/caches/modules-2/files-2.1
-        continue-on-error: true
+          path: ~/.m2/repository/**
+          key: maven-cache-${{ hashFiles('~/.m2/repository/**') }}
 
       - name: Build Maven project
-        run: cd maven-project && mvn -B verify
- 
-      - name: Build Gradle project
-        run: cd gradle-project && ./gradlew build
+        run: mvn -B verify
