@@ -25,7 +25,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.m2/repository/**
-          key: maven-cache-${{ hashFiles('~/.m2/repository/**') }}
+          key: maven-cache-${{ hashFiles('**/pom.xml') }}
 
       - name: Build Maven project
         run: mvn -B verify
